@@ -1,0 +1,33 @@
+.user-detail-header {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    padding: 16px 28px;
+    min-height: 220px;
+    background-color: orange;
+    color: white;
+
+    img {
+        height: 75px;
+        width: 75px;
+        border-radius: 100%;
+    }
+
+    h2 {
+        margin: 0;
+    }
+
+    .header-name {
+        height: 75px;
+        margin-left: 28px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+
+.pin-tr-corner {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+}
