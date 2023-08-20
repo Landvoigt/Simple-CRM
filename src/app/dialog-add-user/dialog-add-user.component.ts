@@ -1,7 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { User } from 'src/models/user.class';
-import { Firestore } from '@angular/fire/firestore';
-import { collection, addDoc } from "firebase/firestore";
+import { Firestore, doc, updateDoc } from '@angular/fire/firestore';
 import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
@@ -12,6 +11,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class DialogAddUserComponent implements OnInit {
   firestore: Firestore = inject(Firestore);
   user = new User();
+  userID = '';
   birthDate: Date | any;
   loading: boolean = false;
 
@@ -22,13 +22,12 @@ export class DialogAddUserComponent implements OnInit {
 
   async saveUser() {
     this.loading = true;
-    this.user.birthDate = this.birthDate.getTime();
-    console.log(this.user);
+    const userDocRef = doc(this.firestore, 'users', this.userID);
+    const newData = this.user.toJSON();
 
-    const docRef = await addDoc(collection(this.firestore, "users"), this.user.toJSON());
-    console.log("Document written with ID: ", docRef.id);
-    
-    this.loading = false;
+    await updateDoc(userDocRef, newData);
+
     this.dialogRef.close();
+    this.loading = false;
   }
 }

@@ -30,7 +30,7 @@ export class UserDetailComponent implements OnInit {
   }
 
   async getUser() {
-    const docRef = doc(this.firestore, "users", this.userID); // Provide the document ID as the third argument
+    const docRef = doc(this.firestore, "users", this.userID);
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
@@ -45,11 +45,19 @@ export class UserDetailComponent implements OnInit {
     const dialog = this.dialog.open(DialogEditUserComponent);
     dialog.componentInstance.user = new User(this.user.toJSON());
     dialog.componentInstance.userID = this.userID;
+
+    dialog.afterClosed().subscribe(() => {
+      this.getUser();
+    });
   }
 
   editAddress() {
     const dialog = this.dialog.open(DialogEditAddressComponent);
     dialog.componentInstance.user = new User(this.user.toJSON());
     dialog.componentInstance.userID = this.userID;
+
+    dialog.afterClosed().subscribe(() => {
+      this.getUser();
+    });
   }
 }
