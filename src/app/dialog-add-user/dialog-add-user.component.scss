@@ -1,11 +1,13 @@
-h1 {
-    padding-left: 26px;
-}
-
 .input-container {
-    padding-bottom: 0;
+    padding: 16px 28px;
+    padding-bottom: 0px;
 }
 
 .btn-container {
-    padding: 0 18px;
+    padding: 0 28px;
+    padding-bottom: 16px;
+}
+
+.dialog {
+    width: 600px;
 }

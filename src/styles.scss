@@ -8,6 +8,14 @@ body {
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+h3 {
+    margin: 0 !important;
+    font-size: 1.6em !important;
+    padding: 0 !important;
+    padding-left: 30px !important;
+    padding-bottom: 4px !important;
+}
+
 .mr-16 {
     margin-right: 16px;
 }
@@ -18,4 +26,17 @@ body {
 
 .full-width {
     width: 100%;
+    display: flex;
+}
+
+.w-30 {
+    width: 30%;
+}
+
+.w-50 {
+    width: 50%;
+}
+
+.w-70 {
+    width: 70%;
 }
