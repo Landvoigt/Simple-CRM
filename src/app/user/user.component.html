@@ -5,14 +5,16 @@
 <mat-card>
     <table class="user-table">
         <tr>
+            <th>Customer ID</th>
             <th>Name</th>
+            <th>Location</th>
             <th>Email</th>
-            <th>City</th>
         </tr>
         <tr *ngFor="let user of allUsers" [routerLink]="['/user/' + user.id]">
+            <td>{{ user.customerID }}</td>
             <td>{{ user.data.firstName }} {{ user.data.surName }}</td>
-            <td>{{ user.data.email }}</td>
             <td>{{ user.data.city }}</td>
+            <td>{{ user.data.email }}</td>
         </tr>
     </table>
 </mat-card>

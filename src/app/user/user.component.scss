@@ -18,6 +18,10 @@ mat-card {
         font-weight: 500;
         text-align: start;
         padding: 16px;
+
+        &:first-child {
+            width: 90px;
+        }
     }
 
     tr {

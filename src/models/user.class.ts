@@ -1,34 +1,40 @@
 export class User {
-    subscribe(arg0: (changes: any) => void) {
-      throw new Error('Method not implemented.');
-    }
+    customerID: number;
+    email: string;
     firstName: string;
     surName: string;
     birthDate: number;
     street: string;
-    postalCode: number;
+    streetNumber: number;
+    postCode: number;
     city: string;
-    email: string;
+    entryDate: string;
 
     constructor(obj?: any) {
+        this.customerID = obj ? obj.customerID : '';
+        this.email = obj ? obj.email : '';
         this.firstName = obj ? obj.firstName : '';
         this.surName = obj ? obj.surName : '';
         this.birthDate = obj ? obj.birthDate : '';
         this.street = obj ? obj.street : '';
-        this.postalCode = obj ? obj.postalCode : '';
+        this.streetNumber = obj ? obj.streetNumber : '';
+        this.postCode = obj ? obj.postCode : '';
         this.city = obj ? obj.city : '';
-        this.email = obj ? obj.email : '';
+        this.entryDate = obj ? obj.entryDate : '';
     }
 
     public toJSON() {
         return {
+            customerID: this.customerID,
+            email: this.email,
             firstName: this.firstName,
             surName: this.surName,
             birthDate: this.birthDate,
             street: this.street,
-            postalCode: this.postalCode,
+            streetNumber: this.streetNumber,
+            postCode: this.postCode,
             city: this.city,
-            email: this.email
+            entryDate: this.entryDate
         }
     }
 }
