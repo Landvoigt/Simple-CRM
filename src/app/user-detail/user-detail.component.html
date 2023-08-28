@@ -1,7 +1,7 @@
 <mat-card class="user-detail-header">
     <img src="assets/img/user_avatar.png">
     <div class="header-name">
-        <h2>{{ user.firstName }} {{ user.surName }}</h2>
+        <h2>{{ user.firstName }} {{ user.surName }} <b>#{{ formatCustomerID(user.customerID) }}</b></h2>
         <span>{{ user.email }}</span>
     </div>
     <button mat-icon-button class="pin-tr-corner" [matMenuTriggerFor]="menuUser">
@@ -25,5 +25,21 @@
     </button>
     <mat-menu #menuAddress="matMenu">
         <button mat-menu-item (click)="editAddress()">Edit</button>
+    </mat-menu>
+</mat-card>
+
+<mat-card class="mt-28">
+    <mat-card-header>
+        <mat-card-title>Contact</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        {{ user.email }}<br>{{ user.phone }}
+    </mat-card-content>
+
+    <button mat-icon-button class="pin-tr-corner" [matMenuTriggerFor]="menuContact">
+        <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menuContact="matMenu">
+        <button mat-menu-item (click)="editContact()">Edit</button>
     </mat-menu>
 </mat-card>

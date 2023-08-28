@@ -1,6 +1,7 @@
 export class User {
     customerID: number;
     email: string;
+    phone: string;
     firstName: string;
     surName: string;
     birthDate: number;
@@ -13,6 +14,7 @@ export class User {
     constructor(obj?: any) {
         this.customerID = obj ? obj.customerID : '';
         this.email = obj ? obj.email : '';
+        this.phone = obj ? obj.phone : '';
         this.firstName = obj ? obj.firstName : '';
         this.surName = obj ? obj.surName : '';
         this.birthDate = obj ? obj.birthDate : '';
@@ -27,6 +29,7 @@ export class User {
         return {
             customerID: this.customerID,
             email: this.email,
+            phone: this.phone,
             firstName: this.firstName,
             surName: this.surName,
             birthDate: this.birthDate,

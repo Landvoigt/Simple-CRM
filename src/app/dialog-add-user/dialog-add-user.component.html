@@ -1,22 +1,23 @@
-<div class="dialog">
+<form class="dialog" #userForm="ngForm" (ngSubmit)="saveUser(userForm)">
     <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
     <h3 mat-dialog-title>Add new user</h3>
     <div mat-dialog-content class="input-container">
         <div class="full-width">
             <mat-form-field class="mr-16 w-50" appearance="outline">
                 <mat-label>Firstname</mat-label>
-                <input [(ngModel)]="user.firstName" matInput [disabled]="loading">
+                <input [(ngModel)]="user.firstName" name="firstName" matInput [disabled]="loading" required>
             </mat-form-field>
 
             <mat-form-field appearance="outline" class="w-50">
                 <mat-label>Surname</mat-label>
-                <input [(ngModel)]="user.surName" matInput [disabled]="loading">
+                <input [(ngModel)]="user.surName" name="surName" matInput [disabled]="loading" required>
             </mat-form-field>
         </div>
         <div>
             <mat-form-field class="full-width">
                 <mat-label>Birthday</mat-label>
-                <input [(ngModel)]="birthDate" matInput [matDatepicker]="picker" [disabled]="loading">
+                <input [(ngModel)]="birthDate" name="birthDate" matInput [matDatepicker]="picker" [disabled]="loading"
+                    required>
                 <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
@@ -24,32 +25,39 @@
         <div class="full-width">
             <mat-form-field appearance="outline" class="mr-16 w-80">
                 <mat-label>Street</mat-label>
-                <input [(ngModel)]="user.street" matInput [disabled]="loading">
+                <input [(ngModel)]="user.street" name="street" matInput [disabled]="loading" required>
             </mat-form-field>
             <mat-form-field appearance="outline" class="w-20">
                 <mat-label>No.</mat-label>
-                <input [(ngModel)]="user.streetNumber" matInput [disabled]="loading">
+                <input [(ngModel)]="user.streetNumber" name="streetNumber" matInput [disabled]="loading" type="number" required>
             </mat-form-field>
         </div>
         <div class="full-width">
             <mat-form-field appearance="outline" class="mr-16 w-30">
                 <mat-label>Post Code</mat-label>
-                <input [(ngModel)]="user.postCode" matInput [disabled]="loading">
+                <input [(ngModel)]="user.postCode" name="postCode" matInput pattern="^\d{4,5}$" [disabled]="loading" required>
             </mat-form-field>
             <mat-form-field appearance="outline" class="w-70">
                 <mat-label>City</mat-label>
-                <input [(ngModel)]="user.city" matInput [disabled]="loading">
+                <input [(ngModel)]="user.city" name="city" matInput [disabled]="loading" required>
             </mat-form-field>
         </div>
         <div>
             <mat-form-field appearance="outline" class="full-width">
                 <mat-label>Email</mat-label>
-                <input [(ngModel)]="user.email" matInput [disabled]="loading">
+                <input [(ngModel)]="user.email" name="email" matInput [disabled]="loading"
+                    pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}" required>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Phone</mat-label>
+                <input [(ngModel)]="user.phone" name="phone" matInput pattern="^(?:\+(?:49|41|43|1|44|33))\d{8,12}$" [disabled]="loading">
             </mat-form-field>
         </div>
     </div>
     <div mat-dialog-actions class="btn-container">
         <button mat-button [disabled]="loading" (click)="dialogRef.close()">Cancel</button>
-        <button mat-button (click)="saveUser()" cdkFocusInitial [disabled]="loading">Save</button>
+        <button mat-button type="submit" cdkFocusInitial [disabled]="loading">Save</button>
     </div>
-</div>
+</form>

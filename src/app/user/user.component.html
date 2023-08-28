@@ -11,7 +11,7 @@
             <th>Email</th>
         </tr>
         <tr *ngFor="let user of allUsers" [routerLink]="['/user/' + user.id]">
-            <td>{{ user.customerID }}</td>
+            <td>{{ formatCustomerID(user.data.customerID) }}</td>
             <td>{{ user.data.firstName }} {{ user.data.surName }}</td>
             <td>{{ user.data.city }}</td>
             <td>{{ user.data.email }}</td>

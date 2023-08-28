@@ -1,7 +1,7 @@
 <mat-drawer-container class="mat-drawer-container" autosize>
   <mat-drawer #drawer class="sidenav" mode="side" [opened]="true">
     <div routerLink="/" routerLinkActive="router-link-active" class="logo-container">
-      Platz für Logo
+      <img src="assets/img/logo.png" class="logo">
     </div>
 
     <ul>
@@ -15,7 +15,7 @@
     <mat-toolbar color="primary">
       <mat-toolbar-row>
         <mat-icon (click)="drawer.toggle()" class="menu-icon">menu</mat-icon>
-        <span>Simple CRM</span>
+        <span>{{ headerText }}</span>
       </mat-toolbar-row>
     </mat-toolbar>
 

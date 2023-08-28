@@ -5,18 +5,17 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { User } from 'src/models/user.class';
 
 @Component({
-  selector: 'app-dialog-edit-user',
-  templateUrl: './dialog-edit-user.component.html',
-  styleUrls: ['./dialog-edit-user.component.scss']
+  selector: 'app-dialog-edit-contact',
+  templateUrl: './dialog-edit-contact.component.html',
+  styleUrls: ['./dialog-edit-contact.component.scss']
 })
-export class DialogEditUserComponent implements OnInit {
+export class DialogEditContactComponent implements OnInit {
   firestore: Firestore = inject(Firestore);
   user = new User();
   userID = '';
   loading: boolean = false;
-  birthDate: Date | any;
 
-  constructor(public dialogRef: MatDialogRef<DialogEditUserComponent>) { }
+  constructor(public dialogRef: MatDialogRef<DialogEditContactComponent>) { }
 
   ngOnInit(): void {
   }

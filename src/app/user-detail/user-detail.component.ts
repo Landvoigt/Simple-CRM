@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/models/user.class';
 import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.component';
 import { DialogEditAddressComponent } from '../dialog-edit-address/dialog-edit-address.component';
+import { DialogEditContactComponent } from '../dialog-edit-contact/dialog-edit-contact.component';
 
 @Component({
   selector: 'app-user-detail',
@@ -17,14 +18,12 @@ export class UserDetailComponent implements OnInit {
   user: User = new User();
 
   constructor(
-    private route: ActivatedRoute, 
+    private route: ActivatedRoute,
     public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.userID = params['id'];
-      console.log(this.userID);
-
       this.getUser();
     });
   }
@@ -35,9 +34,6 @@ export class UserDetailComponent implements OnInit {
 
     if (docSnap.exists()) {
       this.user = new User(docSnap.data());
-      console.log(this.user);
-    } else {
-      console.log("User not found");
     }
   }
 
@@ -59,5 +55,21 @@ export class UserDetailComponent implements OnInit {
     dialog.afterClosed().subscribe(() => {
       this.getUser();
     });
+  }
+
+  editContact() {
+    const dialog = this.dialog.open(DialogEditContactComponent);
+    dialog.componentInstance.user = new User(this.user.toJSON());
+    dialog.componentInstance.userID = this.userID;
+
+    dialog.afterClosed().subscribe(() => {
+      this.getUser();
+    });
+  }
+
+  formatCustomerID(customerID: number) {
+    let numberString = customerID.toString();
+    let paddedNumber = numberString.padStart(5, '0');
+    return paddedNumber;
   }
 }

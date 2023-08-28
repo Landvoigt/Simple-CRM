@@ -3,7 +3,7 @@
     flex-direction: row;
     align-items: flex-end;
     padding: 16px 28px;
-    min-height: 220px;
+    min-height: 205px;
     background-color: orange;
     color: white;
 
@@ -12,17 +12,28 @@
         width: 75px;
         border-radius: 100%;
     }
-
-    h2 {
-        margin: 0;
-    }
-
+    
     .header-name {
         height: 75px;
         margin-left: 28px;
         display: flex;
         flex-direction: column;
         gap: 8px;
+
+        h2 {
+            margin: 0;
+            font-size: 2em;
+        }
+        
+        b {
+            font-weight: 500;
+            font-size: 0.45em;
+        }
+
+        span {
+            font-style: italic;
+            margin-left: 2px;
+        }
     }
 }
 
@@ -30,4 +41,8 @@
     position: absolute;
     top: 8px;
     right: 8px;
+}
+
+mat-card-content {
+    padding-bottom: 16px;
 }

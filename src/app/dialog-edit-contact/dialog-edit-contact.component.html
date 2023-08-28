@@ -1,0 +1,24 @@
+<form class="dialog" #userForm="ngForm" (ngSubmit)="editUser(userForm)">
+    <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+    <h3 mat-dialog-title>Edit Contact</h3>
+    <div mat-dialog-content class="input-container">
+        <div class="full-width">
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Email</mat-label>
+                <input [(ngModel)]="user.email" name="email" matInput [disabled]="loading"
+                    pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}" required>
+            </mat-form-field>
+        </div>
+        <div class="full-width">
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Phone</mat-label>
+                <input [(ngModel)]="user.phone" name="phone" matInput pattern="^(?:\+(?:49|41|43|1|44|33))\d{8,12}$"
+                    [disabled]="loading">
+            </mat-form-field>
+        </div>
+    </div>
+    <div mat-dialog-actions class="btn-container">
+        <button mat-button [disabled]="loading" (click)="dialogRef.close()">Cancel</button>
+        <button mat-button type="submit" cdkFocusInitial [disabled]="loading">Save</button>
+    </div>
+</form>

@@ -1,30 +1,30 @@
-<div class="dialog">
+<form class="dialog" #userForm="ngForm" (ngSubmit)="editUser(userForm)">
     <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
-    <h3 mat-dialog-title>Add Address</h3>
+    <h3 mat-dialog-title>Edit Address</h3>
     <div mat-dialog-content class="input-container">
         <div class="full-width">
             <mat-form-field appearance="outline" class="mr-16 w-80">
                 <mat-label>Street</mat-label>
-                <input [(ngModel)]="user.street" matInput [disabled]="loading">
+                <input [(ngModel)]="user.street" name="street" matInput [disabled]="loading" required>
             </mat-form-field>
             <mat-form-field appearance="outline" class="w-20">
                 <mat-label>No.</mat-label>
-                <input [(ngModel)]="user.streetNumber" matInput [disabled]="loading">
+                <input [(ngModel)]="user.streetNumber" name="streetNumber" matInput [disabled]="loading" type="number" required>
             </mat-form-field>
         </div>
         <div class="full-width">
             <mat-form-field appearance="outline" class="mr-16 w-30">
                 <mat-label>Post Code</mat-label>
-                <input [(ngModel)]="user.postCode" matInput [disabled]="loading">
+                <input [(ngModel)]="user.postCode" name="postCode" matInput pattern="^\d{4,5}$" [disabled]="loading" required>
             </mat-form-field>
             <mat-form-field appearance="outline" class="w-70">
                 <mat-label>City</mat-label>
-                <input [(ngModel)]="user.city" matInput [disabled]="loading">
+                <input [(ngModel)]="user.city" name="city" matInput [disabled]="loading" required>
             </mat-form-field>
         </div>
     </div>
     <div mat-dialog-actions class="btn-container">
         <button mat-button [disabled]="loading" (click)="dialogRef.close()">Cancel</button>
-        <button mat-button (click)="editUser()" cdkFocusInitial [disabled]="loading">Save</button>
+        <button mat-button type="submit" cdkFocusInitial [disabled]="loading">Save</button>
     </div>
-</div>
+</form>

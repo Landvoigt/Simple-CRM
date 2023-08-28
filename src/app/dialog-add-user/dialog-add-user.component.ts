@@ -2,6 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { User } from 'src/models/user.class';
 import { Firestore, addDoc, collection, getDocs, query } from '@angular/fire/firestore';
 import { MatDialogRef } from '@angular/material/dialog';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-dialog-add-user',
@@ -21,19 +22,21 @@ export class DialogAddUserComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  async saveUser() {
-    this.loading = true;
-    const userCollection = collection(this.firestore, 'users');
+  async saveUser(form: NgForm) {
+    if (form.valid) {
+      this.loading = true;
+      const userCollection = collection(this.firestore, 'users');
 
-    await this.createCustomerID(userCollection);
-    this.getEntryDate();
-    this.user.birthDate = this.birthDate;
+      await this.createCustomerID(userCollection);
+      this.getEntryDate();
+      this.user.birthDate = this.birthDate;
 
-    const newData = this.user.toJSON();
-    await addDoc(userCollection, newData);
+      const newData = this.user.toJSON();
+      await addDoc(userCollection, newData);
 
-    this.dialogRef.close();
-    this.loading = false;
+      this.dialogRef.close();
+      this.loading = false;
+    }
   }
 
   async createCustomerID(userCollection: any) {
