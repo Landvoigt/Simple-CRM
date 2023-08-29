@@ -7,11 +7,43 @@
     background-color: orange;
     color: white;
 
-    img {
-        height: 75px;
-        width: 75px;
-        border-radius: 100%;
-    }
+    .avatar-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        cursor: pointer;
+        border-radius: 50%;
+        border: 1px solid #3f51b5;
+    
+        .avatar {
+            z-index: 1;
+            height: 75px;
+            width: 75px;
+            border-radius: 100%;
+    
+            &:hover {
+                filter: contrast(0.2);
+            }
+        }
+    
+        div {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            z-index: 2;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none;
+    
+            .edit-icon {
+                height: 22px;
+                width: 22px;
+            }
+        }
+    } 
     
     .header-name {
         height: 75px;

@@ -1,0 +1,9 @@
+<div class="dialog">
+    <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+    <h3 mat-dialog-title>Edit Avatar</h3>
+
+    <div mat-dialog-actions class="btn-container">
+        <button mat-button [disabled]="loading" (click)="dialogRef.close()">Cancel</button>
+        <button mat-button  cdkFocusInitial [disabled]="loading">Save</button>
+    </div>
+</div>

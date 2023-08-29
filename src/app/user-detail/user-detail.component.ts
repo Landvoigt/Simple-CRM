@@ -6,6 +6,7 @@ import { User } from 'src/models/user.class';
 import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.component';
 import { DialogEditAddressComponent } from '../dialog-edit-address/dialog-edit-address.component';
 import { DialogEditContactComponent } from '../dialog-edit-contact/dialog-edit-contact.component';
+import { DialogEditAvatarComponent } from '../dialog-edit-avatar/dialog-edit-avatar.component';
 
 @Component({
   selector: 'app-user-detail',
@@ -16,6 +17,7 @@ export class UserDetailComponent implements OnInit {
   firestore: Firestore = inject(Firestore);
   userID = '';
   user: User = new User();
+  showIcon: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -59,6 +61,16 @@ export class UserDetailComponent implements OnInit {
 
   editContact() {
     const dialog = this.dialog.open(DialogEditContactComponent);
+    dialog.componentInstance.user = new User(this.user.toJSON());
+    dialog.componentInstance.userID = this.userID;
+
+    dialog.afterClosed().subscribe(() => {
+      this.getUser();
+    });
+  }
+
+  editAvatar() {
+    const dialog = this.dialog.open(DialogEditAvatarComponent);
     dialog.componentInstance.user = new User(this.user.toJSON());
     dialog.componentInstance.userID = this.userID;
 

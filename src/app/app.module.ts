@@ -30,6 +30,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { DialogEditAddressComponent } from './dialog-edit-address/dialog-edit-address.component';
 import { DialogEditUserComponent } from './dialog-edit-user/dialog-edit-user.component';
 import { DialogEditContactComponent } from './dialog-edit-contact/dialog-edit-contact.component';
+import { DialogEditAvatarComponent } from './dialog-edit-avatar/dialog-edit-avatar.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { DialogEditContactComponent } from './dialog-edit-contact/dialog-edit-co
     UserDetailComponent,
     DialogEditAddressComponent,
     DialogEditUserComponent,
-    DialogEditContactComponent
+    DialogEditContactComponent,
+    DialogEditAvatarComponent
   ],
   imports: [
     BrowserModule,
