@@ -5,10 +5,10 @@
 <mat-card [class.dark-theme]="themeService.isDarkMode">
     <table class="user-table" [class.dark-theme]="themeService.isDarkMode">
         <tr>
-            <th>Customer ID</th>
-            <th>Name</th>
-            <th>Location</th>
-            <th>Email</th>
+            <th (click)="sortingAspect = 'customerID'; sortUsers(); toggleSortingOrder()">Customer ID</th>
+            <th (click)="sortingAspect = 'firstName'; sortUsers(); toggleSortingOrder()">Name</th>
+            <th (click)="sortingAspect = 'city'; sortUsers(); toggleSortingOrder()">Location</th>
+            <th (click)="sortingAspect = 'email'; sortUsers(); toggleSortingOrder()">Email</th>
         </tr>
         <tr *ngFor="let user of allUsers" [routerLink]="['/user/' + user.id]">
             <td>{{ formatCustomerID(user.data.customerID) }}</td>

@@ -30,7 +30,7 @@ export class DialogAddUserComponent implements OnInit {
 
       await this.createCustomerID(userCollection);
       this.getEntryDate();
-      this.user.birthDate = this.birthDate;
+      this.user.birthDate = this.birthDate.toLocaleDateString('en-GB');
 
       const newData = this.user.toJSON();
       await addDoc(userCollection, newData);

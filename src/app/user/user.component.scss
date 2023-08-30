@@ -28,9 +28,14 @@ mat-card.dark-theme {
         font-weight: 500;
         text-align: start;
         padding: 16px;
+        cursor: pointer;
 
         &:first-child {
             width: 95px;
+        }
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.05);
         }
     }
 
@@ -63,6 +68,16 @@ mat-card.dark-theme {
 
 .user-table.dark-theme {
     th {
-        color: rgba(255, 255, 255, 0.45);
+        color: rgba(121, 230, 219, 0.9);
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+    }
+
+    tr {
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
     }
 }

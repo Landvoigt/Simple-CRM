@@ -13,7 +13,9 @@ import { ThemeService } from '../theme.service';
 export class UserComponent implements OnInit {
   firestore: Firestore = inject(Firestore);
   user = new User();
-  allUsers: any[] | undefined;
+  allUsers: any[] = [];
+  sortingAspect: string = 'customerID';
+  sortingOrder: string = 'asc';
 
   constructor(public dialog: MatDialog, public themeService: ThemeService) {
   }
@@ -27,6 +29,8 @@ export class UserComponent implements OnInit {
         return { id: doc.id, data: doc.data() };
       });
     });
+
+    this.toggleSortingOrder();
   }
 
   openDialog() {
@@ -41,5 +45,25 @@ export class UserComponent implements OnInit {
 
   toggleTheme() {
     this.themeService.toggleTheme();
+  }
+
+  sortUsers(): void {
+    this.allUsers.sort((a, b) => {
+      const aValue = this.sortingAspect === 'customerID' ? +a.data[this.sortingAspect] : a.data[this.sortingAspect];
+      const bValue = this.sortingAspect === 'customerID' ? +b.data[this.sortingAspect] : b.data[this.sortingAspect];
+
+      if (aValue < bValue) {
+        return this.sortingOrder === 'asc' ? -1 : 1;
+      } else if (aValue > bValue) {
+        return this.sortingOrder === 'asc' ? 1 : -1;
+      } else {
+        return 0;
+      }
+    });
+  }
+
+  toggleSortingOrder() {
+    this.sortingOrder = this.sortingOrder === 'asc' ? 'desc' : 'asc';
+    this.sortUsers();
   }
 }

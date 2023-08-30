@@ -54,8 +54,7 @@
         <div>
             <mat-form-field appearance="outline" class="full-width">
                 <mat-label>Phone</mat-label>
-                <input [(ngModel)]="user.phone" name="phone" matInput pattern="^(?:\+(?:49|41|43|1|44|33))\d{8,12}$"
-                    [disabled]="loading">
+                <input [(ngModel)]="user.phone" name="phone" matInput type="number" [disabled]="loading">
             </mat-form-field>
         </div>
     </div>

@@ -19,6 +19,22 @@
 
 <mat-card class="mt-28" [class.dark-theme]="themeService.isDarkMode">
     <mat-card-header>
+        <mat-card-title>Contact</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        {{ user.email }}<br>{{ user.phone }}
+    </mat-card-content>
+
+    <button mat-icon-button class="pin-tr-corner" [matMenuTriggerFor]="menuContact">
+        <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menuContact="matMenu">
+        <button mat-menu-item (click)="editContact()">Edit</button>
+    </mat-menu>
+</mat-card>
+
+<mat-card class="mt-28" [class.dark-theme]="themeService.isDarkMode">
+    <mat-card-header>
         <mat-card-title>Address</mat-card-title>
     </mat-card-header>
     <mat-card-content>
@@ -35,16 +51,18 @@
 
 <mat-card class="mt-28" [class.dark-theme]="themeService.isDarkMode">
     <mat-card-header>
-        <mat-card-title>Contact</mat-card-title>
+        <mat-card-title>Birthday</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-        {{ user.email }}<br>{{ user.phone }}
+        {{ user.birthDate }}
     </mat-card-content>
+</mat-card>
 
-    <button mat-icon-button class="pin-tr-corner" [matMenuTriggerFor]="menuContact">
-        <mat-icon>more_vert</mat-icon>
-    </button>
-    <mat-menu #menuContact="matMenu">
-        <button mat-menu-item (click)="editContact()">Edit</button>
-    </mat-menu>
+<mat-card class="mt-28" [class.dark-theme]="themeService.isDarkMode">
+    <mat-card-header>
+        <mat-card-title>Member since</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        {{ user.entryDate }}
+    </mat-card-content>
 </mat-card>
