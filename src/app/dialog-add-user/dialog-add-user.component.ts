@@ -3,6 +3,7 @@ import { User } from 'src/models/user.class';
 import { Firestore, addDoc, collection, getDocs, query } from '@angular/fire/firestore';
 import { MatDialogRef } from '@angular/material/dialog';
 import { NgForm } from '@angular/forms';
+import { ThemeService } from '../theme.service';
 
 @Component({
   selector: 'app-dialog-add-user',
@@ -16,7 +17,7 @@ export class DialogAddUserComponent implements OnInit {
   birthDate: string | any;
   loading: boolean = false;
 
-  constructor(public dialogRef: MatDialogRef<DialogAddUserComponent>) {
+  constructor(public dialogRef: MatDialogRef<DialogAddUserComponent>, public themeService: ThemeService) {
   }
 
   ngOnInit(): void {
@@ -49,5 +50,9 @@ export class DialogAddUserComponent implements OnInit {
   getEntryDate() {
     const currentDate = new Date().toLocaleDateString('en-GB');
     this.user.entryDate = currentDate;
+  }
+
+  toggleTheme() {
+    this.themeService.toggleTheme();
   }
 }

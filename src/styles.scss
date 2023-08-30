@@ -1,11 +1,18 @@
 html,
 body {
     height: 100%;
-}
-
-body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+body.light {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+body.dark {
+    background-color: #121212;
+    color: #fff;
 }
 
 h3 {
@@ -47,4 +54,14 @@ h3 {
 
 .w-80 {
     width: 80%;
+}
+
+form.dark-theme {
+    background-color: rgb(158, 223, 216);
+}
+
+mat-form-field.dark-theme {
+    .mat-mdc-text-field-wrapper {
+        background-color: rgb(151, 212, 206);
+    }
 }

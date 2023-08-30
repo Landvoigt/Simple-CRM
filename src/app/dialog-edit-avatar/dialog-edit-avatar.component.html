@@ -1,4 +1,4 @@
-<div class="dialog">
+<div class="dialog" [class.dark-theme]="themeService.isDarkMode">
     <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
     <h3 mat-dialog-title>Edit Avatar</h3>
 

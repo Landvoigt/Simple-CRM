@@ -4,8 +4,18 @@
     bottom: 56px;
 }
 
+.add-user-btn.dark-theme {
+    background-color: rgb(121, 230, 219);
+    color: rgb(45, 45, 45);
+}
+
 mat-card {
     padding: 0;
+}
+
+mat-card.dark-theme {
+    background-color: rgb(90, 90, 90);
+    color: aliceblue;
 }
 
 .user-table {
@@ -48,5 +58,11 @@ mat-card {
     td {
         height: 56px;
         padding-left: 16px;
+    }
+}
+
+.user-table.dark-theme {
+    th {
+        color: rgba(255, 255, 255, 0.45);
     }
 }

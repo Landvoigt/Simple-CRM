@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { ThemeService } from './theme.service';
 
 @Component({
   selector: 'app-root',
@@ -10,8 +11,8 @@ import { filter } from 'rxjs/operators';
 export class AppComponent {
   title = 'simple-crm';
   headerText: string = 'Dashboard';
-
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) { }
+  
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, public themeService: ThemeService) { }
 
   ngOnInit() {
     this.router.events.pipe(
@@ -19,5 +20,9 @@ export class AppComponent {
     ).subscribe(() => {
       this.headerText = this.activatedRoute.root.firstChild?.snapshot.data['headerText'] || 'Dashboard';
     });
+  }
+
+  toggleTheme() {
+    this.themeService.toggleTheme();
   }
 }

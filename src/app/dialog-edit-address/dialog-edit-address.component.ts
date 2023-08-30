@@ -2,6 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { Firestore, doc, updateDoc } from '@angular/fire/firestore';
 import { NgForm } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { ThemeService } from '../theme.service';
 import { User } from 'src/models/user.class';
 
 @Component({
@@ -15,7 +16,7 @@ export class DialogEditAddressComponent implements OnInit {
   userID = '';
   loading: boolean = false;
 
-  constructor(public dialogRef: MatDialogRef<DialogEditAddressComponent>) { }
+  constructor(public dialogRef: MatDialogRef<DialogEditAddressComponent>, public themeService: ThemeService) { }
 
   ngOnInit(): void {
   }
@@ -31,5 +32,9 @@ export class DialogEditAddressComponent implements OnInit {
       this.dialogRef.close();
       this.loading = false;
     }
+  }
+  
+  toggleTheme() {
+    this.themeService.toggleTheme();
   }
 }

@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Firestore, collection, collectionSnapshots } from '@angular/fire/firestore';
 import { DialogAddUserComponent } from '../dialog-add-user/dialog-add-user.component';
 import { User } from 'src/models/user.class';
+import { ThemeService } from '../theme.service';
 
 @Component({
   selector: 'app-user',
@@ -14,7 +15,7 @@ export class UserComponent implements OnInit {
   user = new User();
   allUsers: any[] | undefined;
 
-  constructor(public dialog: MatDialog) {
+  constructor(public dialog: MatDialog, public themeService: ThemeService) {
   }
 
   ngOnInit(): void {
@@ -36,5 +37,9 @@ export class UserComponent implements OnInit {
     let numberString = customerID.toString();
     let paddedNumber = numberString.padStart(5, '0');
     return paddedNumber;
+  }
+
+  toggleTheme() {
+    this.themeService.toggleTheme();
   }
 }

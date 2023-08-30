@@ -1,10 +1,10 @@
 <mat-drawer-container class="mat-drawer-container" autosize>
-  <mat-drawer #drawer class="sidenav" mode="side" [opened]="true">
-    <div routerLink="/" routerLinkActive="router-link-active" class="logo-container">
+  <mat-drawer #drawer class="sidenav" mode="side" [opened]="true" [class.dark-theme]="themeService.isDarkMode">
+    <div routerLink="/" routerLinkActive="router-link-active" class="logo-container" [class.dark-theme]="themeService.isDarkMode">
       <img src="assets/img/logo.png" class="logo">
     </div>
 
-    <ul>
+    <ul [class.dark-theme]="themeService.isDarkMode">
       <li routerLink="/" routerLinkActive="router-link-active"><mat-icon>fact_check</mat-icon>Dashboard</li>
       <li routerLink="/user" routerLinkActive="router-link-active"><mat-icon>perm_identity</mat-icon>User</li>
     </ul>
@@ -12,14 +12,19 @@
   </mat-drawer>
 
   <div class="example-sidenav-content">
-    <mat-toolbar color="primary">
+    <mat-toolbar class="toolbar" [class.dark-theme]="themeService.isDarkMode">
       <mat-toolbar-row>
         <mat-icon (click)="drawer.toggle()" class="menu-icon">menu</mat-icon>
         <span>{{ headerText }}</span>
       </mat-toolbar-row>
+      <mat-toolbar-row class="theme-icon-container">
+        <mat-icon *ngIf="!themeService.isDarkMode" class="color-mode-icon"
+          (click)="toggleTheme()">brightness_3</mat-icon>
+        <mat-icon *ngIf="themeService.isDarkMode" class="color-mode-icon" (click)="toggleTheme()">wb_sunny</mat-icon>
+      </mat-toolbar-row>
     </mat-toolbar>
 
-    <div class="router-container">
+    <div class="router-container" [class.dark-theme]="themeService.isDarkMode">
       <router-outlet></router-outlet>
     </div>
 

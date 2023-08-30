@@ -3,6 +3,7 @@ import { Firestore, doc, updateDoc } from '@angular/fire/firestore';
 import { NgForm } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { User } from 'src/models/user.class';
+import { ThemeService } from '../theme.service';
 
 @Component({
   selector: 'app-dialog-edit-user',
@@ -16,7 +17,7 @@ export class DialogEditUserComponent implements OnInit {
   loading: boolean = false;
   birthDate: Date | any;
 
-  constructor(public dialogRef: MatDialogRef<DialogEditUserComponent>) { }
+  constructor(public dialogRef: MatDialogRef<DialogEditUserComponent>, public themeService: ThemeService) { }
 
   ngOnInit(): void {
   }
@@ -32,5 +33,9 @@ export class DialogEditUserComponent implements OnInit {
       this.dialogRef.close();
       this.loading = false;
     }
+  }
+
+  toggleTheme() {
+    this.themeService.toggleTheme();
   }
 }

@@ -7,6 +7,7 @@ import { DialogEditUserComponent } from '../dialog-edit-user/dialog-edit-user.co
 import { DialogEditAddressComponent } from '../dialog-edit-address/dialog-edit-address.component';
 import { DialogEditContactComponent } from '../dialog-edit-contact/dialog-edit-contact.component';
 import { DialogEditAvatarComponent } from '../dialog-edit-avatar/dialog-edit-avatar.component';
+import { ThemeService } from '../theme.service';
 
 @Component({
   selector: 'app-user-detail',
@@ -21,7 +22,8 @@ export class UserDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    public dialog: MatDialog) { }
+    public dialog: MatDialog, 
+    public themeService: ThemeService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -83,5 +85,9 @@ export class UserDetailComponent implements OnInit {
     let numberString = customerID.toString();
     let paddedNumber = numberString.padStart(5, '0');
     return paddedNumber;
+  }
+
+  toggleTheme() {
+    this.themeService.toggleTheme();
   }
 }

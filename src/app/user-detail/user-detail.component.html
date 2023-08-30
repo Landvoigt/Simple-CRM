@@ -17,7 +17,7 @@
     </mat-menu>
 </mat-card>
 
-<mat-card class="mt-28">
+<mat-card class="mt-28" [class.dark-theme]="themeService.isDarkMode">
     <mat-card-header>
         <mat-card-title>Address</mat-card-title>
     </mat-card-header>
@@ -33,7 +33,7 @@
     </mat-menu>
 </mat-card>
 
-<mat-card class="mt-28">
+<mat-card class="mt-28" [class.dark-theme]="themeService.isDarkMode">
     <mat-card-header>
         <mat-card-title>Contact</mat-card-title>
     </mat-card-header>

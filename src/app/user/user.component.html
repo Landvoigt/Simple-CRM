@@ -1,9 +1,9 @@
-<button mat-fab color="primary" class="add-user-btn" matTooltip="Add user" (click)="openDialog()">
+<button mat-fab color="primary" class="add-user-btn" matTooltip="Add user" (click)="openDialog()" [class.dark-theme]="themeService.isDarkMode">
     <mat-icon>add</mat-icon>
 </button>
 
-<mat-card>
-    <table class="user-table">
+<mat-card [class.dark-theme]="themeService.isDarkMode">
+    <table class="user-table" [class.dark-theme]="themeService.isDarkMode">
         <tr>
             <th>Customer ID</th>
             <th>Name</th>
